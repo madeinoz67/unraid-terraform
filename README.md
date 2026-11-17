@@ -31,7 +31,13 @@ git clone https://github.com/mcreekmore/unraid-terraform.git
 cd unraid-terraform
 ```
 
-In the `terraform.tfvars` file is where you'll set all of your preferences and paths to things like the image you'd like to use, your username, size of the disk, route to your public key for ssh access, and even the routes to your unraids domains and isos share.
+In the `terraform.tfvars` file is where you'll set all of your preferences and paths to things like the image you'd like to use, your username, size of the disk, route to your public key for ssh access, and even the routes to your unraids domains and isos share. Copy the template to get started, then edit it:
+
+```bash
+cp terraform.tfvars.example terraform.tfvars
+```
+
+`terraform.tfvars` holds your real address, paths and key, so it is gitignored and never committed. Only the template is.
 
 - `root@unraid`: in the uri, this should be an accessible ip/dns record that you can ssh into.
 - `/home/yourhomedir/.ssh/id_ed25519.pub`: change this to point to an ssh key that you have added to unraid to authenticate.

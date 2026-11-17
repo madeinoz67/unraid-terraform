@@ -9,7 +9,7 @@ terraform {
     }
     cloudinit = {
       source = "hashicorp/cloudinit"
-      version = "2.3.6-alpha1"
+      version = "2.4.1"
     }
   }
 }
