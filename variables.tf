@@ -1,4 +1,8 @@
 variable "vm_name" {}
+variable "vm_index" {
+  type    = number
+  default = 1
+}
 variable "vm_memory" {}
 variable "vm_vcpu" {}
 variable "vm_disk_size" {}

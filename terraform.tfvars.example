@@ -1,4 +1,5 @@
-vm_name           = "rocky-vm"
+vm_name           = "rocky"
+vm_index          = 1
 vm_memory         = "4096"
 vm_vcpu           = 2
 vm_disk_size      = 21474836480 # 20GB

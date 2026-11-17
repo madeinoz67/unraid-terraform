@@ -15,13 +15,13 @@ resource "libvirt_pool" "domains" {
 }
 
 resource "libvirt_volume" "vm_image" {
-  name   = "${var.vm_name}_image.qcow2"
+  name   = "${local.vm_full_name}_image.qcow2"
   pool   = libvirt_pool.isos.name
   source = var.source_image
 }
 
 resource "libvirt_volume" "vm_disk" {
-  name           = "${var.vm_name}_disk.qcow2"
+  name           = "${local.vm_full_name}_disk.qcow2"
   base_volume_id = libvirt_volume.vm_image.id
   pool           = libvirt_pool.domains.name
   size           = var.vm_disk_size

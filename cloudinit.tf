@@ -9,7 +9,7 @@ data "cloudinit_config" "user_data" {
   part {
     content_type = "text/cloud-config"
     content      = templatefile("${path.module}/user_data.yaml.tftpl", {
-      vm_name         = var.vm_name
+      vm_name         = local.vm_full_name
       user_name       = var.user_name
       ssh_public_key  = local.ssh_public_key
     })

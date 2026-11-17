@@ -1,5 +1,11 @@
+locals {
+  # vm_name + zero-padded vm_index, e.g. "rocky" + "03" -> "rocky-03";
+  # every volume and the domain share this so state stays consistent.
+  vm_full_name = "${var.vm_name}-${format("%02d", var.vm_index)}"
+}
+
 resource "libvirt_domain" "vm" {
-  name       = var.vm_name
+  name       = local.vm_full_name
   memory     = var.vm_memory
   vcpu       = var.vm_vcpu
   autostart  = true

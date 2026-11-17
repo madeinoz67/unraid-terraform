@@ -1,5 +1,8 @@
-hostname: ${vm_name}
+fqdn: ${vm_name}.lan
+# fqdn's first label becomes the hostname; manage_etc_hosts writes
+# "127.0.0.1 rocky-01.lan rocky-01", which resolves the name cleanly.
 manage_etc_hosts: true
+prefer_fqdn_over_hostname: true
 users:
   - name: ${user_name}
     sudo: ALL=(ALL) NOPASSWD:ALL
