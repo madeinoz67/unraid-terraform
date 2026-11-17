@@ -3,20 +3,17 @@ manage_etc_hosts: true
 users:
   - name: ${user_name}
     sudo: ALL=(ALL) NOPASSWD:ALL
-    groups: users, admin
+    groups: [wheel]
     home: /home/${user_name}
     shell: /bin/bash
-    lock_passwd: false
-    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: true
     ssh_authorized_keys:
       - ${ssh_public_key}
 ssh_pwauth: false
-disable_root: false
+disable_root: true
 package_update: true
 package_upgrade: true
 packages:
   - qemu-guest-agent
-  - neofetch
 runcmd:
-  - systemctl enable qemu-guest-agent
-  - systemctl start qemu-guest-agent
+  - systemctl enable --now qemu-guest-agent
