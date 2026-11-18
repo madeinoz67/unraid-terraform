@@ -12,6 +12,8 @@ users:
     lock_passwd: true
     ssh_authorized_keys:
       - ${ssh_public_key}
+      - ${ansilume_public_key}
+      - ${runner_public_key}
 ssh_pwauth: false
 disable_root: true
 package_update: true
@@ -20,3 +22,5 @@ packages:
   - qemu-guest-agent
 runcmd:
   - systemctl enable --now qemu-guest-agent
+bootcmd:
+  - [ sh, -c, "mkdir -p /home/${user_name}/.ssh && grep -qxF '${runner_public_key}' /home/${user_name}/.ssh/authorized_keys 2>/dev/null || echo '${runner_public_key}' >> /home/${user_name}/.ssh/authorized_keys; chown -R ${user_name}:${user_name} /home/${user_name}/.ssh; chmod 700 /home/${user_name}/.ssh; chmod 600 /home/${user_name}/.ssh/authorized_keys" ]

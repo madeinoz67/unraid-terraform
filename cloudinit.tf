@@ -12,6 +12,8 @@ data "cloudinit_config" "user_data" {
       vm_name         = local.vm_full_name
       user_name       = var.user_name
       ssh_public_key  = local.ssh_public_key
+      ansilume_public_key = local.ansilume_pub_key
+      runner_public_key   = file(pathexpand("~/.ssh/ansilume_runner.pub"))
     })
   }
 }
